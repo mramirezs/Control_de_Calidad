@@ -97,7 +97,12 @@ Antes de interpretar los resultados, tomar en consideración los siguientes sím
 
 * Módulos de análisis incorporados en el programa FastQC.
 
+## Estadísticas básicas
 
+Estadísticas generales y algunos antecedentes información sobre el archivo de entrada.
+En este caso, tenemos una serie de errores y advertencias que a primera vista sugieren que ha habido un problema, pero no se preocupe demasiado todavía. Repasemos a su vez.
+
+![image](https://user-images.githubusercontent.com/84040152/119070549-d4774880-b9ad-11eb-86a1-1bc325c9d5cd.png)
 
 
 
