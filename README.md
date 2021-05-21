@@ -104,7 +104,7 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 
 ![image](https://user-images.githubusercontent.com/84040152/119070549-d4774880-b9ad-11eb-86a1-1bc325c9d5cd.png)
 
-
+## Calidad por secuencia de base
 
 
 
