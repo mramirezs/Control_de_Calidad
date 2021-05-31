@@ -14,6 +14,9 @@ Línea 4: representa el puntaje de calidad.
 
 ![image](https://user-images.githubusercontent.com/84040152/119056915-21005b00-b991-11eb-9e26-22217e7751dd.png)
 
+- Existen muchos métodos diferentes para codificar los puntajes de calidad de nuestras secuencias.
+
+
 ## FASTA
 
 Secuencia de nucleótidos basado en texto sin puntuación de calidad, que es solo la línea 1 y 2 de FASTQ, tiene un encabezado que comienza con “>” y la siguiente línea en la secuencia.
