@@ -109,5 +109,5 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 
 ## Calidad por secuencia de base
 
-
+Basa el valor de calidad en todas las lecturas del archivo FASTQ de entrada
 
