@@ -109,7 +109,7 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 
 ## Calidad por base de la secuencia
 
-Mide los valores de calidad de las bases en todas las lecturas del archivo FASTQ de entrada.
+Mide los valores de calidad de las bases en todas las lecturas del archivo FASTQ de entrada. Este estadistico muestra una descripción general del rango de valores de calidad en todas las bases (en cada posición). Generalmente, si presenta una puntuación de calidad media superior a Q20 se considera aceptable; todo lo que está por encima de Q30 se considera "bueno".
 
 ![image](https://user-images.githubusercontent.com/84040152/120725423-8711d580-c49b-11eb-8f3b-dfcf55c55209.png)
 
