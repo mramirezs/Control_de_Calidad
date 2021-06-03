@@ -107,7 +107,10 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 
 ![image](https://user-images.githubusercontent.com/84040152/119070549-d4774880-b9ad-11eb-86a1-1bc325c9d5cd.png)
 
-## Calidad por secuencia de base
+## Calidad por base de la secuencia
 
-Basa el valor de calidad en todas las lecturas del archivo FASTQ de entrada.
+Mide los valores de calidad de las bases en todas las lecturas del archivo FASTQ de entrada.
+
+![image](https://user-images.githubusercontent.com/84040152/120725423-8711d580-c49b-11eb-8f3b-dfcf55c55209.png)
+
 
