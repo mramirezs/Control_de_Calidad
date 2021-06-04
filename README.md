@@ -182,5 +182,8 @@ Lo ideal es que ambas curvas sean similares, como podemos ver en la imagen.
 ## 2.3.9. Niveles de duplicación de secuencia 
 
 * Resumen de los recuentos de cada secuencia en el archivo FASTQ, útil para detectar problemas de enriquecimiento sesgado como la sobre amplificación por PCR.
+* Este módulo cuenta el grado de duplicación de cada secuencia en el conjunto y crea un gráfico que muestra el número relativo de secuencias con diferentes grados de duplicación.
+
+![image](https://user-images.githubusercontent.com/84040152/120737171-35754500-c4b3-11eb-9670-76e3f9863dfa.png)
 
 
