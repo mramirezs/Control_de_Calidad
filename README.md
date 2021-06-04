@@ -159,10 +159,14 @@ En la imagen superior podemos observar que nuestra biblioteca cumple con los cri
 En la mayoria de casos se suele observar un sesgo  menor al comienzo de la lectura (esto puede deberse a duplicados de PCR durante la amplificación o durante la preparación de la biblioteca.
 ```
 
-## Contenidod de GC por base 
+## 2.3.6. Contenidod de GC por base 
 
+* El contenido de GC en las lecturas de FASTQ, para cada posición de la base.
 
+![image](https://user-images.githubusercontent.com/84040152/120733273-774ebd00-c4ac-11eb-9283-6ccc795dc9e8.png)
 
-
-
+``` 
+En la imagen superior podemos observar dos curvas, la distribución de GC teórico representado de color azul y la distribución real de GC representado en rojo. 
+Lo ideal es que ambas curvas sean similares, como podemos ver en la imagen. 
+```
 
