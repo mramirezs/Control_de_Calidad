@@ -141,4 +141,22 @@ Lo ideal es obtener una imagen completamente azul, que es indicativo de una buen
 
 * Son valores de calidad promedio por secuencia para el archivo FASTQ de entrada.
 
+![image](https://user-images.githubusercontent.com/84040152/120729987-1328fa80-c4a6-11eb-9551-63185a65b6b5.png)
+
+``` 
+En el eje X podemos observar la calidad media de las secuencias secuencia. En general, la gráfica muestra un solo pico, lo cual indica que la mayoria de las secuencias tienen en promedio un Q30 superior.
+En una muestra mala, quizás veriamos más de 1 pico en la imagen.
+```
+## Contenido por base de la secuencia
+
+* Porcentaje de A, C, G, T en las lecturas de FASTQ.
+* Para una biblioteca generada de forma completamente aleatoria con un contenido de GC del 50%, se espera que en cualquier posición dada dentro de una lectura haya un 25% de posibilidades de encontrar una base A, C, T o G.
+
+
+
+
+
+
+
+
 
