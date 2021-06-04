@@ -100,14 +100,14 @@ Antes de interpretar los resultados, tomar en consideración los siguientes sím
 
 * Módulos de análisis incorporados en el programa FastQC.
 
-## Estadísticas básicas
+## 2.3.1. Estadísticas básicas
 
 Estadísticas generales y algunos antecedentes información sobre el archivo de entrada.
 En este caso, tenemos una serie de errores y advertencias que a primera vista sugieren que ha habido un problema, pero no se preocupe demasiado todavía. Repasemos a su vez.
 
 ![image](https://user-images.githubusercontent.com/84040152/119070549-d4774880-b9ad-11eb-86a1-1bc325c9d5cd.png)
 
-## Calidad por base de la secuencia
+## 2.3.2. Calidad por base de la secuencia
 
 * Mide los valores de calidad de las bases en todas las lecturas del archivo FASTQ de entrada. 
 * Este estadistico muestra una descripción general del rango de valores de calidad en todas las bases (en cada posición).
@@ -125,7 +125,7 @@ En la imagen superior; podemos observar una muestra que presenta problemas de ca
 En la imagen superior; podemos observar una muestra que presenta una buena calidad, por encima de Q30 (recordar que una calidad por encima de Q20 es aceptable)    
 ```
 
-## Calidad de secuencia por mosaico
+## 2.3.3. Calidad de secuencia por mosaico
 
 * Esta es una vista puramente teórica sobre la ejecución de secuenciación. La celda de flujo de secuenciación se divide en áreas llamadas celdas.
 * El color de los mosaicos indica la calidad de la lectura.
@@ -137,7 +137,7 @@ En la imagen superior; podemos observar que hay mosaicos de colores rojos, verde
 Lo ideal es obtener una imagen completamente azul, que es indicativo de una buena calidad por secuecnias 
 ```
 
-## Valores de calidad por secuencia
+## 2.3.4. Valores de calidad por secuencia
 
 * Son valores de calidad promedio por secuencia para el archivo FASTQ de entrada.
 
@@ -147,7 +147,7 @@ Lo ideal es obtener una imagen completamente azul, que es indicativo de una buen
 En el eje X podemos observar la calidad media de las secuencias secuencia. En general, la gráfica muestra un solo pico, lo cual indica que la mayoria de las secuencias tienen en promedio un Q30 superior.
 En una muestra mala, quizás veriamos más de 1 pico en la imagen.
 ```
-## Contenido por base de la secuencia
+## 2.3.5. Contenido por base de la secuencia
 
 * Porcentaje de A, C, G, T en las lecturas de FASTQ.
 * Para una biblioteca generada de forma completamente aleatoria con un contenido de GC del 50%, se espera que en cualquier posición dada dentro de una lectura haya un 25% de posibilidades de encontrar una base A, C, T o G.
