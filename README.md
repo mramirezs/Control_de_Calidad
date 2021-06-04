@@ -186,4 +186,5 @@ Lo ideal es que ambas curvas sean similares, como podemos ver en la imagen.
 
 ![image](https://user-images.githubusercontent.com/84040152/120737171-35754500-c4b3-11eb-9670-76e3f9863dfa.png)
 
+## 2.3.10. Secuencias sobrerrepresentadas
 
