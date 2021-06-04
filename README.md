@@ -134,7 +134,7 @@ En la imagen superior; podemos observar una muestra que presenta una buena calid
 
 ``` 
 En la imagen superior; podemos observar que hay mosaicos de colores rojos, verdes, entre otros, lo cual indica una disminución de la calidad.
-Lo ideal es obtener una imagen completamente azul, que es indicativo de una buena calidad por secuecnias 
+Lo ideal es obtener una imagen completamente azul, que es indicativo de una buena calidad por secuecnias. 
 ```
 
 ## 2.3.4. Valores de calidad por secuencia
@@ -147,13 +147,19 @@ Lo ideal es obtener una imagen completamente azul, que es indicativo de una buen
 En el eje X podemos observar la calidad media de las secuencias secuencia. En general, la gráfica muestra un solo pico, lo cual indica que la mayoria de las secuencias tienen en promedio un Q30 superior.
 En una muestra mala, quizás veriamos más de 1 pico en la imagen.
 ```
-## 2.3.5. Contenido por base de la secuencia
+## 2.3.5. Contenido de secuencia por base
 
 * Porcentaje de A, C, G, T en las lecturas de FASTQ.
 * Para una biblioteca generada de forma completamente aleatoria con un contenido de GC del 50%, se espera que en cualquier posición dada dentro de una lectura haya un 25% de posibilidades de encontrar una base A, C, T o G.
 
+![image](https://user-images.githubusercontent.com/84040152/120731285-ee825200-c4a8-11eb-98cc-1c3389d4ae9b.png)
 
+``` 
+En la imagen superior podemos observar que nuestra biblioteca cumple con los criterios mencionados anteriormente.
+En la mayoria de casos se suele observar un sesgo  menor al comienzo de la lectura (esto puede deberse a duplicados de PCR durante la amplificación o durante la preparación de la biblioteca.
+```
 
+## Contenidod de GC por base 
 
 
 
