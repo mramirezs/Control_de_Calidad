@@ -26,7 +26,7 @@ Secuencia de nucleótidos basado en texto sin puntuación de calidad, que es sol
 # 2. Control de calidad
 La primera tarea que tenemos que hacer al recibir una data de secuenciamiento es evaluar su calidad. Para hacer esto usaremos el programa FastQC, la cual es una herramienta de control de calidad para datos NGS. 
 FastQC es   util para resumir la calidad de la secuenciación y detección de problemas potenciales.
-## 2.1. Instalación de FastQc
+## 2.1. Instalación de FastQC
 * El programa se puede descargar en http://www.bioinformatics.babraham.ac.uk/projects/fastqc/.
 - Otra opción es utilizando el siguiente comando:
 
@@ -125,8 +125,20 @@ En la imagen superior; podemos observar una muestra que presenta problemas de ca
 En la imagen superior; podemos observar una muestra que presenta una buena calidad, por encima de Q30 (recordar que una calidad por encima de Q20 es aceptable)    
 ```
 
+## Calidad de secuencia por mosaico
 
+* Esta es una vista puramente teórica sobre la ejecución de secuenciación. La celda de flujo de secuenciación se divide en áreas llamadas celdas.
+* El color de los mosaicos indica la calidad de la lectura.
 
+![image](https://user-images.githubusercontent.com/84040152/120729287-61d59500-c4a4-11eb-9c57-a3a435b02423.png)
 
+``` 
+En la imagen superior; podemos observar que hay mosaicos de colores rojos, verdes, entre otros, lo cual indica una disminución de la calidad.
+Lo ideal es obtener una imagen completamente azul, que es indicativo de una buena calidad por secuecnias 
+```
+
+## Valores de calidad por secuencia
+
+* Son valores de calidad promedio por secuencia para el archivo FASTQ de entrada.
 
 
