@@ -175,12 +175,12 @@ Lo ideal es que ambas curvas sean similares, como podemos ver en la imagen.
 
 | 2.3.7. Contenido de N por base |  2.3.8. Distribución de la longitud de la secuencia |
 | ------------ | ------------- |
-| Porcentaje de bases N en cada posición en las lecturas FASTQ |	Resumen de la distribución de la longitud de las lecturas FASTQ, útil después de recortar las lecturas	|
+| Porcentaje de bases N en cada posición en las lecturas FASTQ. |	Resumen de la distribución de la longitud de las lecturas FASTQ, útil después de recortar las lecturas.	|
 | ![image](https://user-images.githubusercontent.com/84040152/120735424-33f64d80-c4b0-11eb-8457-94c7cb2eb169.png) |	![image](https://user-images.githubusercontent.com/84040152/120735438-3bb5f200-c4b0-11eb-8c03-54cafe41d87d.png)	|
 
 
 ## 2.3.9. Niveles de duplicación de secuencia 
 
-* Resumen de los recuentos de cada secuencia en el archivo FASTQ, útil para detectar problemas de enriquecimiento sesgado como la sobre amplificación por PCR
+* Resumen de los recuentos de cada secuencia en el archivo FASTQ, útil para detectar problemas de enriquecimiento sesgado como la sobre amplificación por PCR.
 
 
