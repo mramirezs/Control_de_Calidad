@@ -113,17 +113,11 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 * Este estadistico muestra una descripción general del rango de valores de calidad en todas las bases (en cada posición).
 * Generalmente, si presenta una puntuación de calidad media superior a Q20 se considera aceptable; todo lo que está por encima de Q30 se considera "bueno".
 
-![image](https://user-images.githubusercontent.com/84040152/120726867-c1c93d00-c49e-11eb-991a-579ee11666e1.png)
+| En la siguiente imagen podemos observar una muestra que presenta problemas de calidad, calidad que disminuye al final de las lecturas. Es normal que la calidad de lectura empeore hacia el final de la lectura. |  En esta otra imagen podemos observar una muestra que presenta una buena calidad, por encima de Q30 (recordar que una calidad por encima de Q20 es aceptable) |
+| ------------ | ------------- |
+| ![image](https://user-images.githubusercontent.com/84040152/120726867-c1c93d00-c49e-11eb-991a-579ee11666e1.png) |	![image](https://user-images.githubusercontent.com/84040152/120727446-2df87080-c4a0-11eb-8bd8-428b222aaa8b.png)	|
 
-``` 
-En la imagen superior; podemos observar una muestra que presenta problemas de calidad, calidad que disminuye al final de las lecturas. Es normal que la calidad de lectura empeore hacia el final de la lectura.    
-```
 
-![image](https://user-images.githubusercontent.com/84040152/120727446-2df87080-c4a0-11eb-8bd8-428b222aaa8b.png)
-
-``` 
-En la imagen superior; podemos observar una muestra que presenta una buena calidad, por encima de Q30 (recordar que una calidad por encima de Q20 es aceptable)    
-```
 
 ## 2.3.3. Calidad de secuencia por mosaico
 
