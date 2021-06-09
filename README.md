@@ -125,27 +125,34 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 * Esta es una vista puramente teórica sobre la ejecución de secuenciación. La celda de flujo de secuenciación se divide en áreas llamadas celdas.
 * El color de los mosaicos indica la calidad de la lectura.
 
-![image](https://user-images.githubusercontent.com/84040152/120729287-61d59500-c4a4-11eb-9c57-a3a435b02423.png)
+| BAD SEQUENCE | GOOD SEQUENCE  |
+| ------------ | ------------- |
+| En la siguiente imagen poedemos observar que hay mosaicos de colores rojos, verdes, entre otros, lo cual indica una disminución de la calidad.  | Lo ideal es obtener una imagen completamente azul, que es indicativo de una buena calidad por secuencias. |
+| ![image](https://user-images.githubusercontent.com/84040152/120729287-61d59500-c4a4-11eb-9c57-a3a435b02423.png) |	![image](https://user-images.githubusercontent.com/84040152/121284002-b6f91880-c8a1-11eb-8613-edffd1a3d238.png) |
 
-``` 
-En la imagen superior; podemos observar que hay mosaicos de colores rojos, verdes, entre otros, lo cual indica una disminución de la calidad.
-Lo ideal es obtener una imagen completamente azul, que es indicativo de una buena calidad por secuecnias. 
-```
 
 ## 2.3.4. Valores de calidad por secuencia
 
 * Son valores de calidad promedio por secuencia para el archivo FASTQ de entrada.
 
-![image](https://user-images.githubusercontent.com/84040152/120729987-1328fa80-c4a6-11eb-9551-63185a65b6b5.png)
+| BAD SEQUENCE | GOOD SEQUENCE  |
+| ------------ | ------------- |
+|  Podemos observar un pico adicional con una Q diferente, pero aún así es considerado una buena muestra. | En el eje X podemos observar la calidad media de las secuencias secuencia. En general, la gráfica muestra un solo pico, lo cual indica que la mayoria de las secuencias tienen en promedio un Q30 superior. |
+| ![image](https://user-images.githubusercontent.com/84040152/121286405-6683ba00-c8a5-11eb-89a1-074275abfe97.png) |	![image](https://user-images.githubusercontent.com/84040152/120729987-1328fa80-c4a6-11eb-9551-63185a65b6b5.png) |
 
-``` 
-En el eje X podemos observar la calidad media de las secuencias secuencia. En general, la gráfica muestra un solo pico, lo cual indica que la mayoria de las secuencias tienen en promedio un Q30 superior.
-En una muestra mala, quizás veriamos más de 1 pico en la imagen.
-```
+
 ## 2.3.5. Contenido de secuencia por base
 
 * Porcentaje de A, C, G, T en las lecturas de FASTQ.
 * Para una biblioteca generada de forma completamente aleatoria con un contenido de GC del 50%, se espera que en cualquier posición dada dentro de una lectura haya un 25% de posibilidades de encontrar una base A, C, T o G.
+
+| BAD SEQUENCE | GOOD SEQUENCE  |
+| ------------ | ------------- |
+|  |  |
+|  |  |
+
+
+
 
 ![image](https://user-images.githubusercontent.com/84040152/120731285-ee825200-c4a8-11eb-98cc-1c3389d4ae9b.png)
 
@@ -157,6 +164,13 @@ En la mayoria de casos se suele observar un sesgo  menor al comienzo de la lectu
 ## 2.3.6. Contenido de GC por base 
 
 * El contenido de GC en las lecturas de FASTQ, para cada posición de la base.
+
+| BAD SEQUENCE | GOOD SEQUENCE  |
+| ------------ | ------------- |
+|   |  |
+|  |  |
+
+
 
 ![image](https://user-images.githubusercontent.com/84040152/120733273-774ebd00-c4ac-11eb-9283-6ccc795dc9e8.png)
 
@@ -178,6 +192,13 @@ Lo ideal es que ambas curvas sean similares, como podemos ver en la imagen.
 
 * Resumen de los recuentos de cada secuencia en el archivo FASTQ, útil para detectar problemas de enriquecimiento sesgado como la sobre amplificación por PCR.
 * Este módulo cuenta el grado de duplicación de cada secuencia en el conjunto y crea un gráfico que muestra el número relativo de secuencias con diferentes grados de duplicación.
+
+| BAD SEQUENCE | GOOD SEQUENCE  |
+| ------------ | ------------- |
+|   |  |
+|  |  |
+
+
 
 ![image](https://user-images.githubusercontent.com/84040152/120737171-35754500-c4b3-11eb-9670-76e3f9863dfa.png)
 
