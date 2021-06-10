@@ -148,18 +148,9 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 
 | BAD SEQUENCE | GOOD SEQUENCE  |
 | ------------ | ------------- |
-|  |  |
-|  |  |
+| la siguiente imagen representa una advertencia, debido a que los porcentajes de A, C, G, T están casi fuera del rango de 25% | Podemos observar que nuestra biblioteca cumple con los criterios mencionados anteriormente. En la mayoria de casos se suele observar un sesgo  menor al comienzo de la lectura (esto puede deberse a duplicados de PCR durante la amplificación o durante la preparación de la biblioteca. |
+| ![image](https://user-images.githubusercontent.com/84040152/121444338-f46aae00-c954-11eb-8ac1-80d898cca8cd.png) | ![image](https://user-images.githubusercontent.com/84040152/120731285-ee825200-c4a8-11eb-98cc-1c3389d4ae9b.png) |
 
-
-
-
-![image](https://user-images.githubusercontent.com/84040152/120731285-ee825200-c4a8-11eb-98cc-1c3389d4ae9b.png)
-
-``` 
-En la imagen superior podemos observar que nuestra biblioteca cumple con los criterios mencionados anteriormente.
-En la mayoria de casos se suele observar un sesgo  menor al comienzo de la lectura (esto puede deberse a duplicados de PCR durante la amplificación o durante la preparación de la biblioteca.
-```
 
 ## 2.3.6. Contenido de GC por base 
 
@@ -167,18 +158,8 @@ En la mayoria de casos se suele observar un sesgo  menor al comienzo de la lectu
 
 | BAD SEQUENCE | GOOD SEQUENCE  |
 | ------------ | ------------- |
-|   |  |
-|  |  |
-
-
-
-![image](https://user-images.githubusercontent.com/84040152/120733273-774ebd00-c4ac-11eb-9283-6ccc795dc9e8.png)
-
-``` 
-En la imagen superior podemos observar dos curvas, la distribución de GC teórico representado de color azul y la distribución real de GC representado en rojo. 
-Lo ideal es que ambas curvas sean similares, como podemos ver en la imagen. 
-```
-
+| En la siguiente una imagen podemos observar una advertencia de porcentaje de GC real sobrepasando al valor teórico. | Podemos observar dos curvas, la distribución de GC teórico representado de color azul y la distribución real de GC representado en rojo. Lo ideal es que ambas curvas sean similares, como podemos ver en la imagen. |
+| ![image](https://user-images.githubusercontent.com/84040152/121446886-2af6f780-c95a-11eb-8532-b962b5380f0e.png) | ![image](https://user-images.githubusercontent.com/84040152/120733273-774ebd00-c4ac-11eb-9283-6ccc795dc9e8.png) |
 
 
 
