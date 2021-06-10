@@ -205,7 +205,7 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 
 | BAD SEQUENCE | GOOD SEQUENCE  |
 | ------------ | ------------- |
-| En este caso, ha encontrado muchas lecturas que parecen tener una frecuencia alta de las seceucnias.  |  |
+| En este caso, ha encontrado muchas lecturas que parecen tener una frecuencia alta de las secuencias.  |  |
 | ![image](https://user-images.githubusercontent.com/84040152/121449009-7b705400-c95e-11eb-9baf-b7d2ee8f823c.png) | ![image](https://user-images.githubusercontent.com/84040152/121449003-76130980-c95e-11eb-85d0-56c024c2b6e9.png) |
 
 
