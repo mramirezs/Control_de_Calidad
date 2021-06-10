@@ -148,7 +148,7 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 
 | BAD SEQUENCE | GOOD SEQUENCE  |
 | ------------ | ------------- |
-| la siguiente imagen representa una advertencia, debido a que los porcentajes de A, C, G, T están casi fuera del rango de 25% | Podemos observar que nuestra biblioteca cumple con los criterios mencionados anteriormente. En la mayoria de casos se suele observar un sesgo  menor al comienzo de la lectura (esto puede deberse a duplicados de PCR durante la amplificación o durante la preparación de la biblioteca. |
+| la siguiente imagen representa una advertencia cuando la diferencia entre alguna de las bases es mayor al 10%, falla cuando esta diferencia alcance el 20% en cualquier posición. Incluso para un conjunto de datos de buena calidad, es posible que esta prueba no pase necesariamente. | Podemos observar que nuestra biblioteca cumple con los criterios mencionados anteriormente. En la mayoria de casos se suele observar un sesgo  menor al comienzo de la lectura (esto puede deberse a duplicados de PCR durante la amplificación o durante la preparación de la biblioteca. |
 | ![image](https://user-images.githubusercontent.com/84040152/121444338-f46aae00-c954-11eb-8ac1-80d898cca8cd.png) | ![image](https://user-images.githubusercontent.com/84040152/120731285-ee825200-c4a8-11eb-98cc-1c3389d4ae9b.png) |
 
 
@@ -168,7 +168,7 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 
 | BAD SEQUENCE | GOOD SEQUENCE  |
 | ------------ | ------------- |
-|  |  |
+| La imagen resume el número de bases ambiguas, representadas como N en todas las lecturas sin procesar. Si el número de N es mayor al 5%, se emite una advertencia;  si es mayor al 20%, falla. | En la siguiente imagen, no se encuentra un porcentaje N en el conjunto de datos, por eso observamos una linea uniforme en el eje X. |
 | ![image](https://user-images.githubusercontent.com/84040152/121447919-49f68900-c95c-11eb-8c10-840207baa4a9.png) | ![image](https://user-images.githubusercontent.com/84040152/120735424-33f64d80-c4b0-11eb-8457-94c7cb2eb169.png) |
 
 
@@ -205,8 +205,8 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 
 | BAD SEQUENCE | GOOD SEQUENCE  |
 | ------------ | ------------- |
-|  |  |
-|  |  |
+| En este caso, ha encontrado muchas lecturas que parecen tener una frecuencia alta de las seceucnias.  |  |
+| ![image](https://user-images.githubusercontent.com/84040152/121449009-7b705400-c95e-11eb-9baf-b7d2ee8f823c.png) | ![image](https://user-images.githubusercontent.com/84040152/121449003-76130980-c95e-11eb-85d0-56c024c2b6e9.png) |
 
 
 
