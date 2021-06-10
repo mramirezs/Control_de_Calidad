@@ -161,12 +161,29 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 | En la siguiente una imagen podemos observar una advertencia de porcentaje de GC real sobrepasando al valor teórico. | Podemos observar dos curvas, la distribución de GC teórico representado de color azul y la distribución real de GC representado en rojo. Lo ideal es que ambas curvas sean similares, como podemos ver en la imagen. |
 | ![image](https://user-images.githubusercontent.com/84040152/121446886-2af6f780-c95a-11eb-8532-b962b5380f0e.png) | ![image](https://user-images.githubusercontent.com/84040152/120733273-774ebd00-c4ac-11eb-9283-6ccc795dc9e8.png) |
 
+## 2.3.7. Contenido de N por base
+
+* Porcentaje de bases N en cada posición en las lecturas FASTQ.
 
 
-| 2.3.7. Contenido de N por base |  2.3.8. Distribución de la longitud de la secuencia |
+| BAD SEQUENCE | GOOD SEQUENCE  |
 | ------------ | ------------- |
-| Porcentaje de bases N en cada posición en las lecturas FASTQ. |	Resumen de la distribución de la longitud de las lecturas FASTQ, útil después de recortar las lecturas.	|
-| ![image](https://user-images.githubusercontent.com/84040152/120735424-33f64d80-c4b0-11eb-8457-94c7cb2eb169.png) |	![image](https://user-images.githubusercontent.com/84040152/120735438-3bb5f200-c4b0-11eb-8c03-54cafe41d87d.png)	|
+|  |  |
+| ![image](https://user-images.githubusercontent.com/84040152/121447919-49f68900-c95c-11eb-8c10-840207baa4a9.png) | ![image](https://user-images.githubusercontent.com/84040152/120735424-33f64d80-c4b0-11eb-8457-94c7cb2eb169.png) |
+
+
+
+
+## 2.3.8. Distribución de la longitud de la secuencia
+
+* Resumen de la distribución de la longitud de las lecturas FASTQ, útil después de recortar las lecturas.
+
+
+| BAD SEQUENCE | GOOD SEQUENCE  |
+| ------------ | ------------- |
+| Podemos observar que las longitudes, en promedio tienes 40 bp, en un caso contrario observariamos quizás diferentes picos lo que representaría que en promedio las longitudes presentan diferentes tamaños. | De igual manera que el caso anterior, podemos observar un solo pico de longitud promedio de las lecturas. |
+| ![image](https://user-images.githubusercontent.com/84040152/121447516-66de8c80-c95b-11eb-9d3f-11c2b9f31ece.png) | ![image](https://user-images.githubusercontent.com/84040152/120735438-3bb5f200-c4b0-11eb-8c03-54cafe41d87d.png) |
+
 
 
 ## 2.3.9. Niveles de duplicación de secuencia 
@@ -176,12 +193,25 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 
 | BAD SEQUENCE | GOOD SEQUENCE  |
 | ------------ | ------------- |
-|   |  |
+|  |  |
+| ![image](https://user-images.githubusercontent.com/84040152/121448197-c12c1d00-c95c-11eb-875b-2871a48fb968.png) | ![image](https://user-images.githubusercontent.com/84040152/120737171-35754500-c4b3-11eb-9670-76e3f9863dfa.png) |
+
+
+
+## 2.3.10. Secuencias sobrerrepresentadas
+
+* Resumen de frecuencia de las secuencias, útil para detectar y clasificar contaminantes en la secuenciación, por ejemplo, cebadores de PCR.
+
+
+| BAD SEQUENCE | GOOD SEQUENCE  |
+| ------------ | ------------- |
+|  |  |
 |  |  |
 
 
 
-![image](https://user-images.githubusercontent.com/84040152/120737171-35754500-c4b3-11eb-9670-76e3f9863dfa.png)
 
-## 2.3.10. Secuencias sobrerrepresentadas
+
+
+
 
