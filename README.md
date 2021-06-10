@@ -11,10 +11,15 @@ Línea 3: Una línea de encabezado o una línea que comience con solo '+'.
 
 Línea 4: representa el puntaje de calidad.
 
+  
+![image](https://user-images.githubusercontent.com/84040152/121451412-26830c80-c963-11eb-89c8-458ab943a9b5.png)
+ 
+```
+Existen muchos métodos diferentes para codificar los puntajes de calidad de nuestras secuencias. Como se puede ver en la siguiente imagen. 
+``` 
+* Para reducir los requisitos de almacenamiento, las puntuaciones de calidad de FASTQ se almacenan como caracteres individuales y se convierten en números obteniendo la puntuación de calidad ASCII y restando 33 o 64. Por ejemplo, el archivo FASTQ de la imagen tiene el formato Sanger y el carácter '!' Tiene un ASCII valor de 33. Por lo tanto, la base correspondiente tendría un puntaje de calidad Phred de 33-33 = Q0 ( poco confiable). Por otro lado, una base con una puntuación de calidad indicada por "@" que tiene un valor ASCII de 64 tendría una puntuación de calidad Phred de 64-33 = Q31.
 
-![image](https://user-images.githubusercontent.com/84040152/119056915-21005b00-b991-11eb-9e26-22217e7751dd.png)
-
-- Existen muchos métodos diferentes para codificar los puntajes de calidad de nuestras secuencias.
+![image](https://user-images.githubusercontent.com/84040152/121451158-af4d7880-c962-11eb-96fa-8aa90a3a3dd2.png)
 
 
 ## FASTA
