@@ -36,7 +36,7 @@ FastQC es   util para resumir la calidad de la secuenciación y detección de pr
 - Otra opción es utilizando el siguiente comando:
 
 ```
-$ wget http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.4.zip
+$ wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip
 ```
 *NOTA: verificar la versión del zip, si es otro, modificar según sea necesario.*
 
