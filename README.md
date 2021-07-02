@@ -21,7 +21,8 @@ Existen muchos métodos diferentes para codificar los puntajes de calidad de nue
 
 ![image](https://user-images.githubusercontent.com/84040152/121451158-af4d7880-c962-11eb-96fa-8aa90a3a3dd2.png)
 
-![image](https://user-images.githubusercontent.com/84040152/124323848-942bee00-db47-11eb-94f5-f4de680dfa05.png)
+![image](https://user-images.githubusercontent.com/84040152/124324227-36e46c80-db48-11eb-85b1-b3874c7c7584.png)
+
 
 
 
