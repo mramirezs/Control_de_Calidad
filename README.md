@@ -43,7 +43,7 @@ $ wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.
 * Una vez descargado el archivo zip, descomprimimos escribiendo:
 
 ```
-$ unzip fastqc_v0.11.4.zip
+$ unzip fastqc_v0.11.9.zip
 ```
   
 * El folder generado tendrá el nombre de FastQC
