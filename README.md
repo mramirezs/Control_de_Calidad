@@ -24,7 +24,7 @@ Existen muchos métodos diferentes para codificar los puntajes de calidad de nue
 ![image](https://user-images.githubusercontent.com/84040152/124324227-36e46c80-db48-11eb-85b1-b3874c7c7584.png)
 
 ```
-donde P es la probabilidad estimada de una base incorrecta
+Donde P es la probabilidad estimada de una base incorrecta. Por ejemplo, si Phred asigna un puntaje de calidad de 10 a una base, las posibilidades de una base incorrectamente son de 1 en 10.
 ```
 
 
