@@ -2,7 +2,8 @@
 
 Manuel Alain Ramírez Sáenz
 
-# Control_de_Calidad
+# Control de Calidad
+
 En esta sección aprenderemos brevemente cómo realizar el Análisis de Calidad de las Secuencias, producto del secuenciamiento.
 
 # 1. Términos empleados
@@ -22,8 +23,11 @@ Línea 4: representa el puntaje de calidad.
  
 ```
 Existen muchos métodos diferentes para codificar los puntajes de calidad de nuestras secuencias. Como se puede ver en la siguiente imagen. 
-``` 
-* Para reducir los requisitos de almacenamiento, las puntuaciones de calidad de FASTQ se almacenan como caracteres individuales y se convierten en números obteniendo la puntuación de calidad ASCII y restando 33 o 64. Por ejemplo, el archivo FASTQ de la imagen tiene el formato Sanger y el carácter '!' Tiene un ASCII valor de 33. Por lo tanto, la base correspondiente tendría un puntaje de calidad Phred de 33-33 = Q0 ( poco confiable). Por otro lado, una base con una puntuación de calidad indicada por "@" que tiene un valor ASCII de 64 tendría una puntuación de calidad Phred de 64-33 = Q31.
+```
+
+* Para reducir los requisitos de almacenamiento, las puntuaciones de calidad de FASTQ se almacenan como caracteres individuales y se convierten en números obteniendo la puntuación de calidad ASCII y restando 33 o 64.
+
+* Por ejemplo, el archivo FASTQ de la imagen tiene el formato Sanger y el carácter '!' Tiene un ASCII valor de 33. Por lo tanto, la base correspondiente tendría un puntaje de calidad Phred de 33-33 = Q0 ( poco confiable). Por otro lado, una base con una puntuación de calidad indicada por "@" que tiene un valor ASCII de 64 tendría una puntuación de calidad Phred de 64-33 = Q31.
 
 ![image](https://user-images.githubusercontent.com/84040152/121451158-af4d7880-c962-11eb-96fa-8aa90a3a3dd2.png)
 
@@ -41,15 +45,18 @@ Secuencia de nucleótidos basado en texto sin puntuación de calidad, que es sol
 ![image](https://user-images.githubusercontent.com/84040152/119057013-51e09000-b991-11eb-8e8f-7bee8d4c8ee3.png)
 
 # 2. Control de calidad
+
 La primera tarea que tenemos que hacer al recibir una data de secuenciamiento es evaluar su calidad. Para hacer esto usaremos el programa FastQC, la cual es una herramienta de control de calidad para datos NGS. 
 FastQC es   util para resumir la calidad de la secuenciación y detección de problemas potenciales.
+
 ## 2.1. Instalación de FastQC
 * El programa se puede descargar en http://www.bioinformatics.babraham.ac.uk/projects/fastqc/.
 - Otra opción es utilizando el siguiente comando:
 
-```
+```bash
 $ wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip
 ```
+
 *NOTA: verificar la versión del zip, si es otro, modificar según sea necesario.*
 
 * Una vez descargado el archivo zip, descomprimimos escribiendo:
@@ -68,42 +75,44 @@ $ cd FastQC
 
 - Para hacer ejecutable el software se usará chmod de la siguiente manera:
 
-```   
+```bash   
 $ chmod 755 fastqc   
 ```
  
 * Una vez realizado, se puede ejecutar directamente ejecutando: 
  
- ```  
+ ```bash  
  $ ./fastqc
  ```
   
 * También puede colocar un enlace en /usr/local/bin para poder ejecutar el programa desde cualquier lugar.
   
-``` 
+```bash 
 $ sudo ln -s  /home/manager/FastQC/fastqc  /usr/local/bin/fastqc   
 ```
 
 * Ahora podemos utilizar el programa desde cualquier lugar, escribiendo:
 
-```
+```bash
 $ fastqc
 ```
+
 ![image](https://user-images.githubusercontent.com/84040152/119067333-6fb8ef80-b9a7-11eb-8433-1e5d695d6bd4.png)
 
 
-## 2.2. Cómo correr los archivos
-### 2.2.1. Correr por medio de la interfaz gráfica
+## 2.2. Cómo ejecutar los archivos
+### 2.2.1. Ejecutar por medio de la interfaz gráfica
 
 Cargar los archivos en la sección "file" de la siguiente gráfica
 
 ![image](https://user-images.githubusercontent.com/84040152/119067417-a4c54200-b9a7-11eb-9ccb-ec589d2d0095.png)
 
-### 2.2.2. Correr por medio de comandos Linux
+### 2.2.2. Ejecutar por medio de comandos Linux
 
 ```
 $ ./fastqc good_seq.fastq bad_seq.fastq 
 ```
+
 * En caso de haber copiado en /usr/local/bin, usar de la siguiente manera:
 
 ```
@@ -134,8 +143,6 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 | ------------ | ------------- |
 | En la siguiente imagen podemos observar una muestra que presenta problemas de calidad, calidad que disminuye al final de las lecturas. Es normal que la calidad de lectura empeore hacia el final de la lectura. | En esta otra imagen podemos observar una muestra que presenta una buena calidad, por encima de Q30 (recordar que una calidad por encima de Q20 es aceptable). |
 | ![image](https://user-images.githubusercontent.com/84040152/120726867-c1c93d00-c49e-11eb-991a-579ee11666e1.png) |	![image](https://user-images.githubusercontent.com/84040152/120727446-2df87080-c4a0-11eb-8bd8-428b222aaa8b.png)	|
-
-
 
 ## 2.3.3. Calidad de secuencia por mosaico
 
@@ -188,20 +195,14 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 | La imagen resume el número de bases ambiguas, representadas como N en todas las lecturas sin procesar. Si el número de N es mayor al 5%, se emite una advertencia;  si es mayor al 20%, falla. | En la siguiente imagen, no se encuentra un porcentaje N en el conjunto de datos, por eso observamos una linea uniforme en el eje X. |
 | ![image](https://user-images.githubusercontent.com/84040152/121447919-49f68900-c95c-11eb-8c10-840207baa4a9.png) | ![image](https://user-images.githubusercontent.com/84040152/120735424-33f64d80-c4b0-11eb-8457-94c7cb2eb169.png) |
 
-
-
-
 ## 2.3.8. Distribución de la longitud de la secuencia
 
 * Resumen de la distribución de la longitud de las lecturas FASTQ, útil después de recortar las lecturas.
-
 
 | BAD SEQUENCE | GOOD SEQUENCE  |
 | ------------ | ------------- |
 | Podemos observar que las longitudes, en promedio tienes 40 bp, en un caso contrario observariamos quizás diferentes picos lo que representaría que en promedio las longitudes presentan diferentes tamaños. | De igual manera que el caso anterior, podemos observar un solo pico de longitud promedio de las lecturas. |
 | ![image](https://user-images.githubusercontent.com/84040152/121447516-66de8c80-c95b-11eb-9d3f-11c2b9f31ece.png) | ![image](https://user-images.githubusercontent.com/84040152/120735438-3bb5f200-c4b0-11eb-8c03-54cafe41d87d.png) |
-
-
 
 ## 2.3.9. Niveles de duplicación de secuencia 
 
@@ -213,22 +214,11 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 |  |  |
 | ![image](https://user-images.githubusercontent.com/84040152/121448197-c12c1d00-c95c-11eb-875b-2871a48fb968.png) | ![image](https://user-images.githubusercontent.com/84040152/120737171-35754500-c4b3-11eb-9670-76e3f9863dfa.png) |
 
-
-
 ## 2.3.10. Secuencias sobrerrepresentadas
 
 * Resumen de frecuencia de las secuencias, útil para detectar y clasificar contaminantes en la secuenciación, por ejemplo, cebadores de PCR.
-
 
 | BAD SEQUENCE | GOOD SEQUENCE  |
 | ------------ | ------------- |
 | En este caso, ha encontrado muchas lecturas que parecen tener una frecuencia alta de las secuencias.  |  |
 | ![image](https://user-images.githubusercontent.com/84040152/121449009-7b705400-c95e-11eb-9baf-b7d2ee8f823c.png) | ![image](https://user-images.githubusercontent.com/84040152/121449003-76130980-c95e-11eb-85d0-56c024c2b6e9.png) |
-
-
-
-
-
-
-
-
