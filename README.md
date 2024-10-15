@@ -1,11 +1,12 @@
-# Instructora 👩‍🏫  
+# Instructor
 
-María Luisa Florez Aroni
-
+Manuel Alain Ramírez Sáenz
 
 # Control_de_Calidad
 En esta sección aprenderemos brevemente cómo realizar el Análisis de Calidad de las Secuencias, producto del secuenciamiento.
+
 # 1. Términos empleados
+
 ## FASTQ
 
 Línea 1: comienza con ‘@’ que contiene información sobre el nombre del secuenciador.
