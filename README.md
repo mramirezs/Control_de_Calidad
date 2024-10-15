@@ -33,6 +33,36 @@ Línea 4: representa el puntaje de calidad.
 
 * Donde P es la probabilidad estimada de una base incorrecta. Por ejemplo, si Phred asigna un puntaje de calidad de 10 a una base, las posibilidades de una base incorrectamente son de 1 en 10.
 
+```bash
+@id
+ATGC
++
+05:I
+```
+
+Vamos a decodificar esos caracteres con la imagen anterior, obteniendo:
+
+```bash
+@id
+ATGC
++
+10 20 25 40
+```
+Luego la probabilidad P:
+
+```bash
+20 -> 10^(20/10) -> 10^-2 -> 1/100 -> 0.01 -> 1%
+```
+
+Obteniéndose:
+
+```
+@id
+ATGC
++
+10% 1% 0.3% 0.01%
+```
+
 ## FASTA
 
 Secuencia de nucleótidos basado en texto sin puntuación de calidad, que es solo la línea 1 y 2 de FASTQ, tiene un encabezado que comienza con “>” y la siguiente línea en la secuencia.
