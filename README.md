@@ -21,9 +21,7 @@ Línea 4: representa el puntaje de calidad.
   
 ![image](https://user-images.githubusercontent.com/84040152/121451412-26830c80-c963-11eb-89c8-458ab943a9b5.png)
  
-```
-Existen muchos métodos diferentes para codificar los puntajes de calidad de nuestras secuencias. Como se puede ver en la siguiente imagen. 
-```
+* Existen muchos métodos diferentes para codificar los puntajes de calidad de nuestras secuencias. Como se puede ver en la siguiente imagen.
 
 * Para reducir los requisitos de almacenamiento, las puntuaciones de calidad de FASTQ se almacenan como caracteres individuales y se convierten en números obteniendo la puntuación de calidad ASCII y restando 33 o 64.
 
@@ -33,10 +31,7 @@ Existen muchos métodos diferentes para codificar los puntajes de calidad de nue
 
 ![image](https://user-images.githubusercontent.com/84040152/124324227-36e46c80-db48-11eb-85b1-b3874c7c7584.png)
 
-```
-Donde P es la probabilidad estimada de una base incorrecta. Por ejemplo, si Phred asigna un puntaje de calidad de 10 a una base, las posibilidades de una base incorrectamente son de 1 en 10.
-```
-
+* Donde P es la probabilidad estimada de una base incorrecta. Por ejemplo, si Phred asigna un puntaje de calidad de 10 a una base, las posibilidades de una base incorrectamente son de 1 en 10.
 
 ## FASTA
 
@@ -61,13 +56,13 @@ $ wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.
 
 * Una vez descargado el archivo zip, descomprimimos escribiendo:
 
-```
+```bash
 $ unzip fastqc_v0.11.9.zip
 ```
   
 * El folder generado tendrá el nombre de FastQC
   
-```  
+```bash  
 $ cd FastQC 
 ```
    
@@ -99,7 +94,6 @@ $ fastqc
 
 ![image](https://user-images.githubusercontent.com/84040152/119067333-6fb8ef80-b9a7-11eb-8433-1e5d695d6bd4.png)
 
-
 ## 2.2. Cómo ejecutar los archivos
 ### 2.2.1. Ejecutar por medio de la interfaz gráfica
 
@@ -109,20 +103,19 @@ Cargar los archivos en la sección "file" de la siguiente gráfica
 
 ### 2.2.2. Ejecutar por medio de comandos Linux
 
-```
+```bash
 $ ./fastqc good_seq.fastq bad_seq.fastq 
 ```
 
 * En caso de haber copiado en /usr/local/bin, usar de la siguiente manera:
 
-```
+```bash
 $ fastqc good_seq.fastq bad_seq.fastq 
 ```
 ## 2.3. Interpretación de los resultados
 Antes de interpretar los resultados, tomar en consideración los siguientes símbolos: 
 
 ![image](https://user-images.githubusercontent.com/84040152/119068548-10a8aa00-b9aa-11eb-8a0d-339f471cd370.png)
-
 
 * Módulos de análisis incorporados en el programa FastQC.
 
