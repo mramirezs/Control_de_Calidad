@@ -397,3 +397,173 @@ La gráfica resultante muestra el archivo original a la izquierda y la versión 
 Puede notar que los resultados de la fastp el recorte no es idéntico a los resultados producidos mediante trimmomatic. Por defecto, fastp funciona de izquierda a derecha, mientras que trimmomatic trabaja de derecha a izquierda. Puedes sintonizar fastp para que coincida con el trimmomatic recorte pero no al revés.
 
 Por ejemplo, el comportamiento de la acción `SLIDINGWINDOW:4:30` en trimmomatic es equivalente a `--cut_window_size 4 --cut_mean_quality 30 --cut_tail` en fastp.
+
+# 5. Recorte del adaptador de secuenciación
+
+## 5.1. ¿Qué son los adaptadores de secuenciación?
+Durante la preparación de la biblioteca, se agregan adaptadores de ADN de diseño único de longitudes que generalmente tienen más de 30 bases 5' y 3' extremos de cada secuencia.
+
+Por lo tanto, después de agregar los adaptadores, las secuencias monocatenarias que lo convierten en el instrumento serán de la forma:
+
+```
+XXXXAAAATTTTGGGGCCCCYYYY
+```
+
+donde `XXXX` y `YYYY` son los adaptadores de secuenciación.
+
+## 5.2. ¿Cómo visualizo los adaptadores de secuenciación?
+
+FastQC detectará adaptadores basados en secuencias de Illumina y los mostrará de la siguiente manera:
+
+![image](figures/fastqc-adapter-content.png)
+
+La línea ascendente indica el número de secuencias adaptadoras contenidas en esa base.
+
+## 5.3. ¿Podemos personalizar la detección del adaptador?
+
+Sí. FASTQC tiene archivos que especifican los adaptadores a buscar.
+
+La ubicación del archivo adaptador depende de la instalación (y el número de versión), pero estaría en alguna parte como `~/miniconda3/envs/bioinfo/opt/fastqc-0.11.8/Configuration/adapter_list.txt`
+
+El contenido predeterminado del archivo adaptador es:
+
+```
+Illumina Universal Adapter                              AGATCGGAAGAG
+Illumina Small RNA 3' Adapter                           TGGAATTCTCGG
+Illumina Small RNA 5' Adapter                           GATCGTCGGACT
+Nextera Transposase Sequence                            CTGTCTCTTATA
+SOLID Small RNA Adapter                                 CGCCTTGGCCGT
+```
+
+Agregar sus adaptadores a esa lista le permitirá mostrarlos en el gráfico FASTQC.
+
+## 5.4. ¿Por qué necesitamos recortar adaptadores?
+
+Como recordarán, dentro del instrumento de secuenciación, cada lectura tiene secuencias artificiales unidas a su fin. Si la secuencia es AAAAAAAAAAA y el adaptador es TTTTTT luego, dependiendo del tamaño de la biblioteca y la longitud de lectura, la secuenciación puede encontrarse con el adaptador.
+
+```
+AAAAAAAAAAATTTTTT
+------>
+---------->
+--------------->
+```
+
+La última lectura tendrá la secuencia del adaptador TTTTT al final.
+
+Si la superposición de bases en el adaptador es lo suficientemente larga (5-6), podemos detectar el propio adaptador y cortar la secuencia al inicio del adaptador.
+
+## 5.5 ¿Cómo recortamos adaptadores?
+
+Obtengamos un archivo SRA que sabemos que necesita alguna fijación:
+
+```
+# Obtención de lecturas que requieren recorte de adaptadores.
+fastq-dump -X 10000 --split-files SRR519926
+
+# Generate a FASTQC report
+fastqc SRR519926_1.fastq
+```
+
+Algunas herramientas como fastp puede reconocer y recortar adaptadores automáticamente. Pero la detección automática solo funciona en algunas circunstancias. 
+
+```bash
+# Single-end mode.
+fastp -i SRR519926_1.fastq -o SRR519926_1.trimmed.fq
+```
+
+Aquí procesamos solo un extremo de la preparación de la biblioteca de extremo emparejado para demostrar el proceso de detección automática del adaptador. La salida de fastp mostrará la secuencia del adaptador que se detectó:
+
+```
+Detecting adapter sequence for read1...
+>Illumina TruSeq Adapter Read 1
+AGATCGGAAGAGCACACGTCTGAACTCCAGTCA
+
+Read1 before filtering:
+total reads: 10000
+total bases: 2510000
+Q20 bases: 1705380(67.9434%)
+Q30 bases: 1436342(57.2248%)
+
+Read1 after filtering:
+total reads: 8123
+total bases: 1925252
+Q20 bases: 1480733(76.9111%)
+Q30 bases: 1264611(65.6855%)
+
+Filtering result:
+reads passed filter: 8123
+reads failed due to low quality: 1854
+reads failed due to too many N: 23
+reads failed due to too short: 0
+reads with adapter trimmed: 1266
+bases trimmed due to adapters: 115763
+
+Duplication rate (may be overestimated since this is SE data): 0%
+
+JSON report: fastp.json
+HTML report: fastp.html
+
+fastp -i SRR519926_1.fastq -o SRR519926_1.trimmed.fq 
+fastp v0.23.4, time used: 2 seconds
+```
+
+Tenga en cuenta cómo la herramienta detectó y eliminó automáticamente la secuencia del adaptador Illumina muy común. Confusamente, la misma detección automática no funcionaría si pasáramos ambas lecturas a la herramienta en modo de extremo emparejado. Por lo tanto, para los datos de extremo emparejado, tendremos que especificar la secuencia del adaptador manualmente. Podemos hacerlo de varias maneras, como una lista de secuencias explícita en la línea de comandos `--adapter_sequence AGATCGGAAGAGCACACGT` o como archivo FASTA `--adapter_fasta adapter.fa`:
+
+Permite crear ese archivo adaptador para el instrumento Illumina:
+
+```
+echo ">illumina" > adapter.fa
+echo "AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC" >> adapter.fa
+
+# Podemos ejecutar fastp en modo de extremo emparejado con un archivo adaptador especificado.
+fastp --adapter_fasta adapter.fa -i SRR519926_1.fastq -I SRR519926_1.fastq \
+        -o SRR519926_1.trim.fq -O SRR519926_2.trim.fq
+
+# Podemos ejecutar fastp en modo de extremo emparejado con una secuencia de adaptador.
+fastp --adapter_sequence AGATCGGAAGAGCACACGT -i SRR519926_1.fastq -I SRR519926_1.fastq \
+        -o SRR519926_1.trim.fq -O SRR519926_2.trim.fq
+```
+
+Para recortar adaptadores con el trimmomatic herramienta que usaríamos:
+
+```
+# Trimmomatic operando en modo de un solo extremo.
+trimmomatic SE SRR519926_1.fastq SRR519926_1.trim.fq ILLUMINACLIP:adapter.fa:2:30:5
+```
+
+## 5.5. ¿Cómo realizamos múltiples pasos a la vez?
+
+La mayoría de las herramientas nos permiten realizar juntos múltiples acciones en un solo comando pasando múltiples acciones. La necesidad más común es recortar tanto la calidad como los adaptadores en modo de extremo emparejado. Los comandos se verían así:
+
+```bash
+# Recorte los adaptadores en el modo de extremo emparejado y recorte las bases de baja calidad de los extremos
+fastp --cut_tail --adapter_sequence AGATCGGAAGAGCACACGT \
+       -i SRR519926_1.fastq -o SRR519926_1.trim.fq \
+       -I SRR519926_2.fastq -O SRR519926_2.trim.fq
+```
+
+La línea de comando resultante en trimmomatic es bastante ocular.
+
+```
+trimmomatic PE SRR519926_1.fastq SRR519926_2.fastq  \
+               SRR519926_1.trim.fq SRR519926_1.unpaired.fq \
+               SRR519926_2.trim.fq SRR519926_2.unpaired.fq \
+               SLIDINGWINDOW:4:30 TRAILING:30 ILLUMINACLIP:adapter.fa:2:30:5
+```
+
+Hay una forma más corta de correr trimmomatic a través del -basein y -baseout parámetros que utilizan plantillas de nombres de lectura para reconocer archivos:
+
+```bash
+trimmomatic PE -basein SRR519926_1.fastq -baseout SRR519926.fq  \
+               SLIDINGWINDOW:4:30 TRAILING:30 ILLUMINACLIP:adapter.fa:2:30:5
+```
+
+Generará archivos de salida como:
+
+```
+SRR519926_1P.fq
+SRR519926_1U.fq
+SRR519926_2P.fq
+SRR519926_3U.fq
+```
+
