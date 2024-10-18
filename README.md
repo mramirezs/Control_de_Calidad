@@ -251,3 +251,5 @@ En este caso, tenemos una serie de errores y advertencias que a primera vista su
 Las herramientas de control de calidad a menudo proporcionan más utilidad, algunas son suites completas de manipulación de secuencias. 
 
 ![image](figures/herramientas_QC.png)
+
+Actualmente recomendamos usar [fastp](https://github.com/OpenGene/fastp) para el control de calidad.
