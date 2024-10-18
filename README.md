@@ -265,7 +265,7 @@ El recorte de calidad de lectura es un proceso utilizado en la secuenciación de
 fastq-dump --split-3 -X 10000 SRR1553607
 
 # Instalación de fastp
-mamba install fastp
+conda install -c bioconda fastp
 ```
 
 Control de calidad con [fastp](https://github.com/OpenGene/fastp):
@@ -274,23 +274,126 @@ Control de calidad con [fastp](https://github.com/OpenGene/fastp):
 # Single end
 fastp --cut_tail -i SRR1553607_1.fastq -o SRR1553607_1.trim.fq
 
+Detecting adapter sequence for read1...
+No adapter detected for read1
+
+Read1 before filtering:
+total reads: 10000
+total bases: 1010000
+Q20 bases: 988715(97.8926%)
+Q30 bases: 945783(93.6419%)
+
+Read1 after filtering:
+total reads: 9999
+total bases: 996684
+Q20 bases: 987731(99.1017%)
+Q30 bases: 944988(94.8132%)
+
+Filtering result:
+reads passed filter: 9999
+reads failed due to low quality: 0
+reads failed due to too many N: 0
+reads failed due to too short: 1
+reads with adapter trimmed: 0
+bases trimmed due to adapters: 0
+
+Duplication rate (may be overestimated since this is SE data): 0%
+
+JSON report: fastp.json
+HTML report: fastp.html
+
+fastp --cut_tail -i SRR1553607_1.fastq -o SRR1553607_1.trim.fq 
+fastp v0.23.4, time used: 1 seconds
+```
+
+```
 # Paired-end
 fastp --cut_tail -i SRR1553607_1.fastq -I SRR1553607_2.fastq -o SRR1553607_1.trim.fq -O SRR1553607_2.trim.fq
+Read1 before filtering:
+total reads: 10000
+total bases: 1010000
+Q20 bases: 988715(97.8926%)
+Q30 bases: 945783(93.6419%)
+
+Read2 before filtering:
+total reads: 10000
+total bases: 1010000
+Q20 bases: 946525(93.7153%)
+Q30 bases: 883136(87.4392%)
+
+Read1 after filtering:
+total reads: 9847
+total bases: 980112
+Q20 bases: 971822(99.1542%)
+Q30 bases: 931244(95.014%)
+
+Read2 after filtering:
+total reads: 9847
+total bases: 954555
+Q20 bases: 940415(98.5187%)
+Q30 bases: 877922(91.9719%)
+
+Filtering result:
+reads passed filter: 19694
+reads failed due to low quality: 166
+reads failed due to too many N: 0
+reads failed due to too short: 140
+reads with adapter trimmed: 334
+bases trimmed due to adapters: 6327
+
+Duplication rate: 0%
+
+Insert size peak (evaluated by paired-end reads): 101
+
+JSON report: fastp.json
+HTML report: fastp.html
+
+fastp --cut_tail -i SRR1553607_1.fastq -I SRR1553607_2.fastq -o SRR1553607_1.trim.fq -O SRR1553607_2.trim.fq 
+fastp v0.23.4, time used: 1 seconds
 ```
 
 Control de calidad con [trimmomatic](https://www.usadellab.org/cms/?page=trimmomatic):
 
 ```bash
+# Instalación con conda
+conda install bioconda::trimmomatic
+
 # Single end mode
 trimmomatic SE SRR1553607_1.fastq  SRR1553607_1.trim.fq  SLIDINGWINDOW:4:30
 
-# Paired-end mode
-trimmomatic PE SRR1553607_1.fastq SRR1553607_2.fastq \
-               SRR1553607_1.trim.fq SRR1553607_1.unpaired.fq \
-               SRR1553607_2.trim.fq SRR1553607_2.unpaired.fq \
-               SLIDINGWINDOW:4:30
-
-# Generar reporte de calidad con fastqc:
-fastqc *fastq *.fq
+TrimmomaticSE: Started with arguments:
+ SRR1553607_1.fastq SRR1553607_1.trim.fq SLIDINGWINDOW:4:30
+Automatically using 1 threads
+Quality encoding detected as phred33
+Input Reads: 10000 Surviving: 9737 (97.37%) Dropped: 263 (2.63%)
+TrimmomaticSE: Completed successfully
 ```
 
+```bash
+# Paired-end mode
+trimmomatic PE SRR1553607_1.fastq SRR1553607_2.fastq \
+               SRR1553607_1.trim2.fq SRR1553607_1.unpaired.fq \
+               SRR1553607_2.trim2.fq SRR1553607_2.unpaired.fq \
+               SLIDINGWINDOW:4:30
+
+TrimmomaticPE: Started with arguments:
+ SRR1553607_1.fastq SRR1553607_2.fastq SRR1553607_1.trim2.fq SRR1553607_1.unpaired.fq SRR1553607_2.trim2.fq SRR1553607_2.unpaired.fq SLIDINGWINDOW:4:30
+Quality encoding detected as phred33
+Input Read Pairs: 10000 Both Surviving: 9156 (91.56%) Forward Only Surviving: 581 (5.81%) Reverse Only Surviving: 121 (1.21%) Dropped: 142 (1.42%)
+TrimmomaticPE: Completed successfully
+```
+
+```bash
+# Generar reporte de calidad con fastqc:
+fastqc *.fastq *.fq
+```
+
+La gráfica resultante muestra el archivo original a la izquierda y la versión de calidad recortada a la derecha:
+
+![image](figures/before.png)
+
+![image](figures/after.png)
+
+Puede notar que los resultados de la fastp el recorte no es idéntico a los resultados producidos mediante trimmomatic. Por defecto, fastp funciona de izquierda a derecha, mientras que trimmomatic trabaja de derecha a izquierda. Puedes sintonizar fastp para que coincida con el trimmomatic recorte pero no al revés.
+
+Por ejemplo, el comportamiento de la acción `SLIDINGWINDOW:4:30` en trimmomatic es equivalente a `--cut_window_size 4 --cut_mean_quality 30 --cut_tail` en fastp.
