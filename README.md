@@ -253,3 +253,44 @@ Las herramientas de control de calidad a menudo proporcionan más utilidad, algu
 ![image](figures/herramientas_QC.png)
 
 Actualmente recomendamos usar [fastp](https://github.com/OpenGene/fastp) para el control de calidad.
+
+# 4. Recorte de calidad de lectura
+
+El recorte de calidad de lectura es un proceso utilizado en la secuenciación de ADN para mejorar la precisión de los datos obtenidos. Históricamente, los primeros instrumentos de secuenciación tendían a producir datos menos fiables hacia el final de cada lectura. Para corregir esto, se aplicaba un método llamado "trimming", que consiste en eliminar las partes de la lectura que tienen baja calidad, comenzando desde el final y avanzando hacia el inicio, hasta alcanzar un nivel aceptable de precisión. Este proceso ayuda a asegurar que los datos utilizados en el análisis sean lo más precisos y fiables posible.
+
+![image](figures/recorte_calidad.png)
+
+```bash
+# Obtención de los datos crudos
+fastq-dump --split-3 -X 10000 SRR1553607
+
+# Instalación de fastp
+mamba install fastp
+```
+
+Control de calidad con [fastp](https://github.com/OpenGene/fastp):
+
+```bash
+# Single end
+fastp --cut_tail -i SRR1553607_1.fastq -o SRR1553607_1.trim.fq
+
+# Paired-end
+fastp --cut_tail -i SRR1553607_1.fastq -I SRR1553607_2.fastq -o SRR1553607_1.trim.fq -O SRR1553607_2.trim.fq
+```
+
+Control de calidad con [trimmomatic](https://www.usadellab.org/cms/?page=trimmomatic):
+
+```bash
+# Single end mode
+trimmomatic SE SRR1553607_1.fastq  SRR1553607_1.trim.fq  SLIDINGWINDOW:4:30
+
+# Paired-end mode
+trimmomatic PE SRR1553607_1.fastq SRR1553607_2.fastq \
+               SRR1553607_1.trim.fq SRR1553607_1.unpaired.fq \
+               SRR1553607_2.trim.fq SRR1553607_2.unpaired.fq \
+               SLIDINGWINDOW:4:30
+
+# Generar reporte de calidad con fastqc:
+fastqc *fastq *.fq
+```
+
