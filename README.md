@@ -611,6 +611,76 @@ Como siempre, se debe evaluar la gravedad del problema y si afecta el estudio, p
 
 No es tan simple interpretar el reporte de duplicación de FastQC. Nos hemos encontrado con dificultades al hacerlo.
 
-Primero, ese pequeño número resaltado en la parte superior es uno de los valores más importantes. Indica el porcentaje de datos que son distintos.
+Primero, ese pequeño número en la parte superior es uno de los valores más importantes. Indica el porcentaje de datos que son distintos.
 
 ![image](figures/porcentage_duplicates.png)
+
+Existen dos tipos de conteos de duplicados: uno para todas las secuencias y otro para secuencias distintas.
+
+Como ejemplo, considera una situación donde tendríamos que construir dos conjuntos como:
+
+```
+A A A A B B B B
+```
+
+y
+
+```
+A A A A A A A B
+```
+
+Ambos ejemplos tienen solo dos secuencias distintas: A y B, y la tasa de duplicación sería la misma. Tenemos dos opciones distintas y ocho observaciones: 2/8. Pero, obviamente, la estructura interna de los conjuntos es completamente diferente. No deberíamos usar la misma medida para cuantificar la duplicación del primer conjunto que la del segundo.
+
+Esta estructura de conjunto es lo que las líneas azul y roja intentan capturar y visualizar para nosotros.
+
+- Las **líneas azules** muestran el porcentaje (eje Y) de todas las secuencias que están duplicadas a una tasa determinada (eje X).
+- La **línea roja** indica el número de secuencias distintas que están duplicadas a una frecuencia específica.
+
+Para ilustrarlo en detalle: en el primer ejemplo, tenemos dos secuencias, cada una duplicada a una tasa de 4. En el segundo caso, tenemos una secuencia única y una secuencia reproducida a una tasa de 7.
+
+### ¿Cómo elimino duplicados?
+
+En general, evita eliminar secuencias duplicadas solo por identidad de secuencia, a menos que tengas buenas razones para hacerlo. Una vez que tengas un archivo de alineación (BAM, que explicaremos más adelante), puedes utilizar la herramienta `MarkDuplicates` de Picard para marcar (etiquetar) alineaciones duplicadas.
+
+# 7. Control de calidad avanzado
+
+## 7.1. ¿Existen diferentes tipos de control de calidad?
+
+Sí. Hasta ahora, solo hemos cubierto el control de calidad del llamado **"dato crudo"** (original), que es el que produce directamente el instrumento.
+
+Sin embargo, el control de calidad también puede realizarse en etapas posteriores del proceso. En esos puntos, suele convertirse en un tipo diferente de tarea, más bien en un método de evaluación de calidad para responder a preguntas como "¿Qué tan bien se ajustan los datos a las características esperadas?". 
+
+## 7.2 Cómo combinar los resultados en un solo informe
+
+Un inconveniente de FastQC (y muchas otras herramientas) es que cada informe se genera en un archivo separado e independiente. Para estudios más extensos, que pueden incluir docenas o incluso cientos de muestras, consultar cada uno de estos informes se vuelve tedioso, o incluso imposible.
+
+La herramienta **MultiQC** está diseñada para facilitar la combinación de diferentes informes en uno solo.
+
+### 7.2.1. Agregar resultados de análisis bioinformáticos de muchas muestras en un solo informe
+
+MultiQC busca en un directorio específico los registros de análisis y compila un informe en HTML. Es una herramienta de uso general, perfecta para resumir la salida de numerosos programas de bioinformática.
+
+Al momento de escribir este documento, MultiQC soportaba la integración de informes generados por 51 herramientas diferentes. La documentación de MultiQC parece casi un índice que describe las herramientas y técnicas que podrías usar para evaluar la calidad de tus datos. Nuestra instalación original no incluyó este paquete, ya que tiene muchos requisitos; por lo tanto, tendrás que instalar MultiQC por tu cuenta. Afortunadamente, existe un paquete de conda para ello.
+
+```bash
+conda install multiqc
+```
+
+Obtén y descomprime los datos:
+
+```bash
+wget http://data.biostarhandbook.com/data/sequencing-platform-data.tar.gz 
+tar zxvf sequencing-platform-data.tar.gz 
+```
+
+Ejecuta FastQC en dos conjuntos de datos para comparar la plataforma Illumina con la de IonTorrent. El siguiente comando generará dos informes de FastQC y la opción `--extract` le indica a FastQC que mantenga los directorios de datos para cada informe:
+
+```bash
+fastqc --extract illumina.fq iontorrent.fq 
+```
+
+Ahora, MultiQC puede combinar los datos de los tres directorios de informes en uno solo:
+
+```bash
+multiqc illumina_fastqc iontorrent_fastqc 
+```
