@@ -569,6 +569,7 @@ SRR519926_3U.fq
 # 6. Duplicación de secuencias
 
 ## 6.2. ¿Qué es la duplicación de secuencias?
+
 La duplicación usualmente se refiere a la presencia de secuencias idénticas en los datos. Dependiendo de la cobertura esperada, los duplicados pueden representar mediciones correctas o errores.
 
 De entrada, la palabra "duplicado" puede ser engañosa; parece implicar que hay “dos” de algo. En realidad, significa “más de uno”. No es de extrañar que haya mucha confusión sobre lo que es la duplicación y, más importante aún, sobre cuál es la acción adecuada cuando se observa.
@@ -581,6 +582,7 @@ Los duplicados se dividen en dos categorías:
 Pero, ¿cómo podemos distinguir entre estos dos casos? Resulta que el proceso está lleno de desafíos.
 
 ## 6.3. ¿Cómo detectamos la duplicación de secuencias?
+
 Existen dos enfoques principales:
 
 1. **Identidad de secuencia**: en este enfoque se identifican y eliminan secuencias que son exactamente idénticas.
@@ -606,7 +608,9 @@ Eliminar duplicados es una alteración significativa de los datos; antes de hace
 Como siempre, se debe evaluar la gravedad del problema y si afecta el estudio, para decidir adecuadamente.
 
 ### ¿Qué significa el gráfico de duplicación de FastQC?
+
 No es tan simple interpretar el reporte de duplicación de FastQC. Nos hemos encontrado con dificultades al hacerlo.
 
 Primero, ese pequeño número resaltado en la parte superior es uno de los valores más importantes. Indica el porcentaje de datos que son distintos.
 
+![image](figures/porcentage_duplicates.png)
