@@ -566,4 +566,44 @@ SRR519926_1U.fq
 SRR519926_2P.fq
 SRR519926_3U.fq
 ```
+# 6. Duplicación de secuencias
+
+## 6.2. ¿Qué es la duplicación de secuencias?
+La duplicación usualmente se refiere a la presencia de secuencias idénticas en los datos. Dependiendo de la cobertura esperada, los duplicados pueden representar mediciones correctas o errores.
+
+De entrada, la palabra "duplicado" puede ser engañosa; parece implicar que hay “dos” de algo. En realidad, significa “más de uno”. No es de extrañar que haya mucha confusión sobre lo que es la duplicación y, más importante aún, sobre cuál es la acción adecuada cuando se observa.
+
+Los duplicados se dividen en dos categorías:
+
+- **Duplicados naturales**: estos son fragmentos idénticos presentes en la muestra. No deben eliminarse.
+- **Copias artificiales**: se producen artificialmente durante el proceso de secuenciación, la amplificación por PCR y errores de detección. Estas sí deben eliminarse.
+
+Pero, ¿cómo podemos distinguir entre estos dos casos? Resulta que el proceso está lleno de desafíos.
+
+## 6.3. ¿Cómo detectamos la duplicación de secuencias?
+Existen dos enfoques principales:
+
+1. **Identidad de secuencia**: en este enfoque se identifican y eliminan secuencias que son exactamente idénticas.
+2. **Identidad de alineación**: en este se encuentran y eliminan secuencias que se alinean de la misma forma.
+
+Aunque suene contraintuitivo, al filtrar por identidad de secuencia, corremos el riesgo de favorecer lecturas con errores. Esto se debe a que eliminamos lecturas idénticas, pero conservamos aquellas que debían ser iguales pero fueron medidas incorrectamente, lo cual podría enriquecer nuestros datos con mediciones incorrectas.
+
+Por otro lado, la identidad basada en alineación solo es viable si se cuenta con un genoma de referencia con el cual alinear los datos.
+
+Existe una nueva clase de métodos que detectan la composición de subsecuencias (llamadas k-mers) que pueden usarse para corregir errores.
+
+### ¿Cuál es el principal problema con los duplicados?
+El efecto adverso de la duplicación de lecturas se manifiesta principalmente durante la detección de variaciones. Este proceso asigna una puntuación de fiabilidad a cada variante basada en el número de veces que ha sido observada. Si una única lectura con una variante resulta estar duplicada artificialmente, corre el riesgo de producir un resultado aparentemente más confiable de lo que realmente es.
+
+## 6.4. ¿Deberíamos eliminar los duplicados?
+Para el llamado de SNPs y la detección de variaciones en el genoma, la respuesta suele ser sí. Para otros procesos, la respuesta a menudo es no.
+
+Eliminar duplicados es una alteración significativa de los datos; antes de hacerlo, se debe contar con evidencia adicional de que ninguno de los duplicados es de origen natural.
+
+Como siempre, se debe evaluar la gravedad del problema y si afecta el estudio, para decidir adecuadamente.
+
+### ¿Qué significa el gráfico de duplicación de FastQC?
+No es tan simple interpretar el reporte de duplicación de FastQC. Nos hemos encontrado con dificultades al hacerlo.
+
+Primero, ese pequeño número resaltado en la parte superior es uno de los valores más importantes. Indica el porcentaje de datos que son distintos.
 
