@@ -593,7 +593,10 @@ Por otro lado, la identidad basada en alineación solo es viable si se cuenta co
 Existe una nueva clase de métodos que detectan la composición de subsecuencias (llamadas k-mers) que pueden usarse para corregir errores.
 
 ### ¿Cuál es el principal problema con los duplicados?
+
 El efecto adverso de la duplicación de lecturas se manifiesta principalmente durante la detección de variaciones. Este proceso asigna una puntuación de fiabilidad a cada variante basada en el número de veces que ha sido observada. Si una única lectura con una variante resulta estar duplicada artificialmente, corre el riesgo de producir un resultado aparentemente más confiable de lo que realmente es.
+
+![image](figures/duplicates.png)
 
 ## 6.4. ¿Deberíamos eliminar los duplicados?
 Para el llamado de SNPs y la detección de variaciones en el genoma, la respuesta suele ser sí. Para otros procesos, la respuesta a menudo es no.
